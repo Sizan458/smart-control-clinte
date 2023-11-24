@@ -6,7 +6,7 @@ const Navbar = () => {
     const {changeTheme,mode} =DarkMode();
     const menu=<>
     <li><NavLink to='/' className='tab tab-active  tabs-lifted bg-red-200  m-1'>Home</NavLink></li>
-    <li><NavLink to='/' className='tab tab-active   tabs-lifted bg-red-200   m-1'>Apartment</NavLink></li>
+    <li><NavLink to='/apartments' className='tab tab-active   tabs-lifted bg-red-200   m-1'>Apartments</NavLink></li>
         
     </>
     return (
