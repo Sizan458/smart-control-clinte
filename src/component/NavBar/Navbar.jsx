@@ -1,5 +1,9 @@
 import { NavLink } from "react-router-dom";
+import { BsFillMoonFill,BsFillSunFill } from "react-icons/bs";
+import { DarkMode } from "../Hookes/Darkmode/DarkMode";
 const Navbar = () => {
+    //call dark mode hook
+    const {changeTheme,mode} =DarkMode();
     const menu=<>
     <li><NavLink to='/' className='tab tab-active  bg-red-200 font-bold text-lg'>Home</NavLink></li>
     <li><NavLink to='/' className='tab tab-active  bg-red-200 font-bold text-lg'>Home</NavLink></li>
@@ -7,7 +11,7 @@ const Navbar = () => {
     </>
     return (
         <div className="w-[99%] mx-auto  ">
-        <div className="navbar  bg-rose-100 bg-fixed z-10 mt-1  rounded-lg">
+        <div className="navbar  bg-rose-100 bg-fixed z-10   rounded-lg">
   <div className="flex-1">
    <NavLink to='/'><img src="https://i.ibb.co/VTQDYXJ/maxresdefault-removebg-preview.png" className="h-[80px]"/></NavLink>
   </div>
@@ -26,7 +30,7 @@ const Navbar = () => {
       </li>
     </ul>
     <div>
-    <button className="btn btn-info m-1">Info</button>
+    <a className="btn text-2xl font-bold  btn-circle mr-3" onClick={()=>changeTheme()}>{mode === "dark"? <BsFillMoonFill/>:<BsFillSunFill/>}</a>
     </div>
     <div>
     <button className="btn btn-info m-1">Info</button>
