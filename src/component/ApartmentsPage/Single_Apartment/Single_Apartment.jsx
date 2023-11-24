@@ -1,6 +1,5 @@
 import LazyLoad from 'react-lazy-load';
 const Single_Apartment = ({data}) => {
-    console.log(data)
     const {apartment,block,floor,img1,rent} = data
    const handleAgreement =()=>{
     
