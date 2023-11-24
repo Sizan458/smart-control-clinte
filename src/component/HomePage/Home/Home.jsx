@@ -2,6 +2,8 @@ import { Helmet } from "react-helmet-async";
 import Slider from "../Slider/Slider";
 import Banner from "../Banner/Banner";
 import Coupons from "../Coupons/Coupons";
+import Location from "../Location/Location";
+import Footer from "../../ShareComponent/Footer/Footer";
 
 const Home = () => {
     return (
@@ -20,6 +22,12 @@ const Home = () => {
           </div>
           <div>
             <Coupons/>
+          </div>
+          <div>
+           <Location/>
+          </div>
+          <div className="w-[98%] mx-auto mt-6">
+            <Footer/>
           </div>
          
         </div>
