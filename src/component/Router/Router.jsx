@@ -3,6 +3,7 @@ import Navbar from "../NavBar/Navbar";
 import Home from "../HomePage/Home/Home";
 import Apartments from "../ApartmentsPage/Apartments/Apartments";
 import Register from "../RegisterPage/Register/Register";
+import Login from "../LoginPage/Login/Login";
 
 const Router =  createBrowserRouter([
     {
@@ -23,6 +24,10 @@ const Router =  createBrowserRouter([
         {
           path:"/register",
           element:<Register/>
+        },
+        {
+          path:"/login",
+          element:<Login/>
         }
       ]
     }
