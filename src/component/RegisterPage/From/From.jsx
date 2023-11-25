@@ -4,17 +4,27 @@ import { Link } from "react-router-dom";
 import swal from 'sweetalert';
 import registerAnimation from "../../../assets/register.json"
 import { AuthContext } from "../../Hookes/AuthProvider/AuthProvider";
+import axios from "axios";
+const img_Hosting_Key = import.meta.env.VITE_IMG_KEY
+const img_hosting_api =`https://api.imgbb.com/1/upload?key=${img_Hosting_Key}`
 const From = () => {
     const [see,setSee]=useState(false);
-    const{userEmail}=useContext(AuthContext);
-    const handleRegister =e =>{
+    const{userEmail, updateUserProfile}=useContext(AuthContext);
+    const handleRegister = async e => {
         e.preventDefault();
         const from = e.target;
         const name = from.name.value;
-        const photo = from.photo.value;
+        const photo = from.photo.files[0];
+       
+        const fromData= new FormData()
+        fromData.append('image', photo)
+        
+        const {data}= await axios.post(img_hosting_api,fromData)
+  
         const email = from.email.value;
         const password = from.password.value;
-        const user ={name, email, password,photo}
+        
+       
         //password condition
         if(password.length<6){
           swal("password must be at least 6 characters");
@@ -31,10 +41,13 @@ const From = () => {
          }
          
         //email & password  register
-        userEmail(email, password)
-        .then(result =>{console.log(result)})
+       await userEmail(email, password)
+       .then(result =>{console.log(result)})
         .catch(err =>{console.log(err)});
-        
+        //update user profile
+       await updateUserProfile(name, data.data.display_url)
+       .then(result =>{console.log(result)})
+       .catch(err =>{console.log(err)});
        }
     
     return (
@@ -57,7 +70,7 @@ const From = () => {
        <label className="label">
          <span className="label-text">Photo url</span>
        </label>
-       <input type="url" placeholder="Photo Url" name="photo"  className="input input-bordered" required />
+       <input type="file" id="image" accept="image/*" placeholder="Photo Url" name="photo"  className="input input-bordered" required />
      </div>
      <div className="form-control">
        <label className="label">
