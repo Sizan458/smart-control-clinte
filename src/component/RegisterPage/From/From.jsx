@@ -5,7 +5,9 @@ import swal from 'sweetalert';
 import registerAnimation from "../../../assets/register.json"
 import { AuthContext } from "../../Hookes/AuthProvider/AuthProvider";
 import axios from "axios";
+//imgbb api key
 const img_Hosting_Key = import.meta.env.VITE_IMG_KEY
+//make img host image hosting url
 const img_hosting_api =`https://api.imgbb.com/1/upload?key=${img_Hosting_Key}`
 const From = () => {
     const [see,setSee]=useState(false);
@@ -15,12 +17,12 @@ const From = () => {
         const from = e.target;
         const name = from.name.value;
         const photo = from.photo.files[0];
-       
+       //make image data from 
         const fromData= new FormData()
+        //append  photo data
         fromData.append('image', photo)
-        
+        //use  axios to  send data imgbb server
         const {data}= await axios.post(img_hosting_api,fromData)
-  
         const email = from.email.value;
         const password = from.password.value;
         
@@ -68,7 +70,7 @@ const From = () => {
      </div>
      <div className="form-control">
        <label className="label">
-         <span className="label-text">Photo url</span>
+         <span className="label-text">Photo </span>
        </label>
        <input type="file" id="image" accept="image/*" placeholder="Photo Url" name="photo"  className="input input-bordered" required />
      </div>

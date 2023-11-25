@@ -8,3 +8,8 @@
   box-sizing: border-box;
   font-family: 'Rancho', cursive;
 }
+
+/*remove the scrollbar from  browser*/
+::-webkit-scrollbar{
+  display: none;
+}

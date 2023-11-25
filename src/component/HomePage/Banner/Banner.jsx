@@ -7,7 +7,7 @@ const Banner = () => {
     <div className="max-w-md">
       <h1 className="mb-5 text-xl font-bold md:text-4xl">Harmony Towers</h1>
       <p className="mb-5">Home is not just a place; it's a feeling. An apartment is where your story begins, where laughter echoes through the walls, and where memories are woven into the very fabric of everyday life.</p>
-      <button className="btn btn-primary">Get Started</button>
+      
     </div>
   </div>
 </div>

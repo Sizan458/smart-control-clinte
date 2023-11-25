@@ -1,10 +1,28 @@
+import { useContext } from 'react';
 import LazyLoad from 'react-lazy-load';
+import { AuthContext } from '../../Hookes/AuthProvider/AuthProvider';
+import NormalAxios from '../../Hookes/NormalAxios/NormalAxios';
+import swal from 'sweetalert';
 const Single_Apartment = ({data}) => {
+    const {user}=useContext(AuthContext)
+    const axios = NormalAxios()
     const {apartment,block,floor,img1,rent} = data
    const handleAgreement =()=>{
     
     const dollar = rent
-    console.log(dollar)
+    const  blockNO =block
+    const floorNO =floor
+    const photo =img1
+    const apartmentNO =apartment
+    const name = user.displayName
+    const  email =user.email
+    const pic = user.photoURL
+    const  status = 'pending'
+    const  agreement ={blockNO,floorNO,photo,apartmentNO,name,email,status,dollar,pic}
+    
+    axios.post('/all-agreements',agreement)
+    swal("Thank YOu!", "We will email you", "success");
+    
    }
 
    
