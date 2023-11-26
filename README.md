@@ -10,6 +10,7 @@ A simple wedsite to rent or buy apartment
 - Using  Firebase
 - Api is create by me
 - Using React Js
+- Website is responsive
 
 
 ## Live Link
