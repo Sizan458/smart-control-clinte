@@ -4,10 +4,9 @@ import Home from "../HomePage/Home/Home";
 import Apartments from "../ApartmentsPage/Apartments/Apartments";
 import Register from "../RegisterPage/Register/Register";
 import Login from "../LoginPage/Login/Login";
-import DashBoard from "../../UserDashboard/DashBoard/DashBoard";
-import Profile from "../../UserDashboard/Profile/Profile";
 import PrivateRoute from "../Hookes/PrivateRoute/PrivateRoute";
 import UsderDashBoard from "../Dashboard/UserDashboard/UsderDashBoard";
+import ErrorPage from "../EorrorPage/ErrorPage";
 
 
 const Router =  createBrowserRouter([
@@ -17,6 +16,7 @@ const Router =  createBrowserRouter([
         <Navbar/>
         <Outlet/>
       </div>,
+      errorElement:<ErrorPage/>,
       children:[
         {
         path:"/",
@@ -36,12 +36,12 @@ const Router =  createBrowserRouter([
         },
         {
           path:"/dashboard",
-          element:<UsderDashBoard/>,
+          element:<PrivateRoute><UsderDashBoard/></PrivateRoute>
           
         }
         
       ],
-      //user dashboard
+     
      
     }
    

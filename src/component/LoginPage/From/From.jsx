@@ -5,21 +5,24 @@ import { useContext, useState } from "react";
 import { AiOutlineGoogle } from "react-icons/ai";
 import swal from 'sweetalert';
 import { AuthContext } from "../../Hookes/AuthProvider/AuthProvider";
+import NormalAxios from "../../Hookes/NormalAxios/NormalAxios";
+
 const From = () => {
+  const Axios =  NormalAxios()
     const [see,setSee]=useState(false);
     const[logError,setLogError]=useState('');
     const[success, setSuccess]=useState('');
     //page reload function
     const location=useLocation()
     const navigate  =useNavigate()
-    const{signIn,googleSignIn}=useContext(AuthContext)
+    const{signIn,googleSignIn,user}=useContext(AuthContext)
     const handleLogIn = e => {
         e.preventDefault();
         const from = e.target;
         const email= from.email.value;
         const password = from.password.value;
         const user ={email,password}
-        console.log(user);
+        
          
           //reset error message & success message
           setLogError('');
@@ -42,9 +45,13 @@ const From = () => {
     googleSignIn()
     .then(result=>{
        console.log(result.user)
-      
+       const userInfo ={
+        email: result.user.email,
+        name: result.user.displayName
+       }
+       Axios.post('/all-user',userInfo)
        //if successful login
-       swal("Good job!", "You are successfully registered", "success");
+       swal("Good job!", "You are successfully registered", "success"); 
         // navigate to page after successful login
         navigate(location?.state? location?.state : '/')
     })
@@ -54,6 +61,8 @@ const From = () => {
       swal("There was an problem. Please try again");
       return 
     })
+    // send data to database
+    Axios.post('/all-user',user.email)
   }
 
     return (

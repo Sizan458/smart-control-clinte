@@ -5,11 +5,14 @@ import swal from 'sweetalert';
 import registerAnimation from "../../../assets/register.json"
 import { AuthContext } from "../../Hookes/AuthProvider/AuthProvider";
 import axios from "axios";
+import NormalAxios from "../../Hookes/NormalAxios/NormalAxios";
 //imgbb api key
 const img_Hosting_Key = import.meta.env.VITE_IMG_KEY
 //make img host image hosting url
 const img_hosting_api =`https://api.imgbb.com/1/upload?key=${img_Hosting_Key}`
 const From = () => {
+  // call axios hook
+  const Axios =  NormalAxios()
     const [see,setSee]=useState(false);
     const{userEmail, updateUserProfile}=useContext(AuthContext);
     const handleRegister = async e => {
@@ -25,7 +28,7 @@ const From = () => {
         const {data}= await axios.post(img_hosting_api,fromData)
         const email = from.email.value;
         const password = from.password.value;
-        
+        const user ={name,email}
        
         //password condition
         if(password.length<6){
@@ -50,6 +53,8 @@ const From = () => {
        await updateUserProfile(name, data.data.display_url)
        .then(result =>{console.log(result)})
        .catch(err =>{console.log(err)});
+       //send email to the database
+      Axios.post('/all-user',user)
        }
     
     return (
