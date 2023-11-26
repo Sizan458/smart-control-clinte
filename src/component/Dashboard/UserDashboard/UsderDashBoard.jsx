@@ -3,10 +3,23 @@ import { Helmet } from 'react-helmet-async';
 import { AuthContext } from '../../Hookes/AuthProvider/AuthProvider';
 import Profile from '../../../UserDashboard/Profile/Profile';
 import Footer from '../../ShareComponent/Footer/Footer';
+import NormalAxios from '../../Hookes/NormalAxios/NormalAxios';
+import { useQuery } from '@tanstack/react-query';
 
 const UsderDashBoard = () => {
     const{user}=useContext(AuthContext)
-    console.log(user)
+    // call hooks
+      const axios =NormalAxios()
+     // query functions
+     const {data:news}=useQuery({
+      queryKey:["newses"],
+      queryFn:async()=> {
+        const result  =await axios.get("/all-announcement")
+        return result.data
+      }
+      
+     })
+       console.log(news)
     return (
         <div>
           <Helmet>
@@ -23,7 +36,20 @@ const UsderDashBoard = () => {
             <Profile/>
             <div><h1 className=' text-black dark:text-rose-600 text-2xl mt-2 text-center'>Announcement</h1>
             <div>
-              <h1 className=' text-black dark:text-rose-600 text-2xl mt-2 text-center'>here you can see all notice</h1>
+              <h1 className=' text-black dark:text-rose-600 text-2xl mt-2 text-center'>Here you can see all notice</h1>
+              <div className='mt-2 w-[80%] mx-auto'>
+                {
+                  news && news.map(news=>(<div key={news._id} className="card m-3 bg-base-100 shadow-xl">
+                  <div className="card-body">
+                    <h2 className="card-title">{news.tittle
+}</h2>
+                    <p>{news.description
+}</p>
+                    
+                  </div>
+                </div>))
+                }
+              </div>
             </div>
             </div>
             </div>

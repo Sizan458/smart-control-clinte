@@ -7,6 +7,9 @@ import Login from "../LoginPage/Login/Login";
 import PrivateRoute from "../Hookes/PrivateRoute/PrivateRoute";
 import UsderDashBoard from "../Dashboard/UserDashboard/UsderDashBoard";
 import ErrorPage from "../EorrorPage/ErrorPage";
+import DashBoard2 from "../Dashboard/DashBoard2/DashBoard2";
+import Member from "../Dashboard/DashBoard2Page/AdmineDashboad/Member/Member";
+import Announcements from "../Dashboard/DashBoard2Page/AdmineDashboad/Announcements/Announcements";
 
 
 const Router =  createBrowserRouter([
@@ -43,6 +46,22 @@ const Router =  createBrowserRouter([
       ],
      
      
+    },
+    {
+      path:'dashboard2',
+     element:<div><DashBoard2/>
+     <Outlet/>
+     </div>,
+     children:[
+      {
+        path:'member',
+        element:<Member/>
+      },
+      {
+        path:"announcements",
+        element:<Announcements/>
+      }
+     ]
     }
    
     
