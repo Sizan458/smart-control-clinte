@@ -1,21 +1,28 @@
 import { useQuery } from "@tanstack/react-query";
 import NormalAxios from "../../component/Hookes/NormalAxios/NormalAxios";
 import User from "../User/User";
-import Footer from "../../component/ShareComponent/Footer/Footer";
+import { useContext} from "react";
+import { AuthContext } from "../../component/Hookes/AuthProvider/AuthProvider";
 
 
 const Profile = () => {
-    //call axios
-    const axios= NormalAxios()
+  const {user} =useContext(AuthContext)
+  console.log(user)
+ 
+   //call axios
+   const axios= NormalAxios()
     //use query
-    const {data:agreement}=useQuery({
+  const {data:agreement}=useQuery({
         queryKey:['agreement'],
         queryFn:async()=>{
             const result = await axios.get('/all-agreements')
-           return result.data
+               
+        return result.data
+         
         }
-        
+
     })
+
         return (
         <div>
           <div className="w-[90%] mx-auto mt-2">
@@ -24,7 +31,7 @@ const Profile = () => {
             }
           </div>
           <div className="mt-2 mx-2">
-            <Footer/>
+           
           </div>
         </div>
     );

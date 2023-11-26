@@ -3,10 +3,12 @@ import LazyLoad from 'react-lazy-load';
 import { AuthContext } from '../../Hookes/AuthProvider/AuthProvider';
 import NormalAxios from '../../Hookes/NormalAxios/NormalAxios';
 import swal from 'sweetalert';
+
+
 const Single_Apartment = ({data}) => {
     const {user}=useContext(AuthContext)
     const axios = NormalAxios()
-    const {apartment,block,floor,img1,rent} = data
+    const {apartment,block,floor,img1,rent,_id} = data
    const handleAgreement =()=>{
     
     const dollar = rent
@@ -48,7 +50,11 @@ const Single_Apartment = ({data}) => {
        </div>
        </div>
        <div className='mt-3'>
-       <button className="btn  btn-sm  w-full text-lg " onClick={handleAgreement}>Agreement</button>
+      
+      
+      <button className="btn  btn-sm  w-full text-lg " onClick={handleAgreement}>Agreement</button>
+    
+      
        </div>
      
   </div>

@@ -11,6 +11,7 @@ const Navbar = () => {
     const menu=<>
     <li><NavLink to='/' className='tab tab-active   bg-red-200  m-1'>Home</NavLink></li>
     <li><NavLink to='/apartments' className='tab tab-active    bg-red-200   m-1'>Apartments</NavLink></li>
+    
         
     </>
      const handleLogOut = () => {
@@ -29,6 +30,7 @@ const Navbar = () => {
   <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
     {menu}
   </ul>
+  
 </div>
     <div>
     <a className="btn text-2xl font-bold  btn-circle mr-3" onClick={()=>changeTheme()}>{mode === "dark"? <BsFillMoonFill/>:<BsFillSunFill/>}</a>
@@ -44,7 +46,7 @@ const Navbar = () => {
     </label>
     <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
     <li className="text-[40px] font-semibold"><p>{user.displayName}</p></li>
-    <li><Link to='/dashboard'><button className="btn btn-error btn-sm m-1 w-full"  >Dashboard</button></Link></li>
+    <li><NavLink to='/dashboard' className='tab tab-active    bg-red-200   m-1'>Dashboard</NavLink></li>
     
     <li><button className="btn btn-error btn-sm m-1"  onClick={handleLogOut}>Logout</button></li>
     </ul>

@@ -3,8 +3,12 @@ import 'aos/dist/aos.css';
 import { useEffect } from 'react';
 
 const User = ({user}) => {
+useEffect(() => {
+    
+},[]);
+
     console.log(user)
-    const {apartmentNO,blockNO,dollar,email,floorNO,name,photo,pic}=user
+    const {apartmentNO,blockNO,dollar,floorNO,photo}=user
     //using aos
     useEffect(() => {
         AOS.init({duration:1500, delay:15});
@@ -18,17 +22,11 @@ const User = ({user}) => {
     <div>
         <p className='text-2xl font-bold text-black'>Rent:{dollar}$</p>
     </div>
-    <div className='flex gap-2 text-xl text-black  font-semibold xl:w-[80%] xl:mx-auto'>
+    <div className='  text-xl text-black  font-semibold'>
         <p>Apartment No:{apartmentNO}</p>
         <p>Floor No:{floorNO}</p>
     </div>
-    <div className='flex  m-2 gap-2 text-xl text-black  font-semibold '>
-        <p>Name:{name}</p>
-        <p><img src={pic} className='h-[50px] rounded-full'></img></p>
-    </div>
-    <div className='text-xl m-3 font-semibold xl:text-center text-black'>
-        <p>Email:{email}</p>
-    </div>
+
   </div>
 </div>
         </div>
