@@ -10,6 +10,7 @@ import ErrorPage from "../EorrorPage/ErrorPage";
 import DashBoard2 from "../Dashboard/DashBoard2/DashBoard2";
 import Member from "../Dashboard/DashBoard2Page/AdmineDashboad/Member/Member";
 import Announcements from "../Dashboard/DashBoard2Page/AdmineDashboad/Announcements/Announcements";
+import Agreement from "../Dashboard/DashBoard2Page/AdmineDashboad/Agreement/agreement";
 
 
 const Router =  createBrowserRouter([
@@ -60,6 +61,10 @@ const Router =  createBrowserRouter([
       {
         path:"announcements",
         element:<Announcements/>
+      },
+      {
+        path:"agreement",
+        element:<Agreement/>
       }
      ]
     }

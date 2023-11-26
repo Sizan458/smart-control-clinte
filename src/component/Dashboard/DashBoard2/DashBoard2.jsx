@@ -7,7 +7,7 @@ const DashBoard2 = () => {
          <li className="m-1"><NavLink>Admin Profile</NavLink></li>
          <li className="m-1"><NavLink to='/dashboard2/member'>Manage Members</NavLink></li>
          <li className="m-1"><NavLink to='/dashboard2/announcements'>Make Announcement</NavLink></li>
-         <li className="m-1"><NavLink>Agreement Requests</NavLink></li>
+         <li className="m-1"><NavLink to="/dashboard2/agreement">Agreement Requests</NavLink></li>
          <li className="m-1"><NavLink>Manage Coupons</NavLink></li>
     </>
 
@@ -30,7 +30,9 @@ const DashBoard2 = () => {
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block w-6 h-6 stroke-current"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
         </label>
       </div> 
-      <div className="flex-1 px-2 mx-2">Navbar Title</div>
+    <div>
+    <NavLink to='/'><img src="https://i.ibb.co/VTQDYXJ/maxresdefault-removebg-preview.png" className="h-[80px]"/></NavLink>
+    </div>
       <div className="flex-none hidden lg:block">
         <ul className="menu menu-horizontal">
           {/* Navbar menu content here */}

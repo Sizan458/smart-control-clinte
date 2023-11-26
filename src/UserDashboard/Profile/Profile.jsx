@@ -1,13 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
 import NormalAxios from "../../component/Hookes/NormalAxios/NormalAxios";
 import User from "../User/User";
-import { useContext} from "react";
-import { AuthContext } from "../../component/Hookes/AuthProvider/AuthProvider";
+
 
 
 const Profile = () => {
-  const {user} =useContext(AuthContext)
-  console.log(user)
+  
  
    //call axios
    const axios= NormalAxios()
