@@ -4,13 +4,14 @@ import Home from "../HomePage/Home/Home";
 import Apartments from "../ApartmentsPage/Apartments/Apartments";
 import Register from "../RegisterPage/Register/Register";
 import Login from "../LoginPage/Login/Login";
-import PrivateRoute from "../Hookes/PrivateRoute/PrivateRoute";
-import UsderDashBoard from "../Dashboard/UserDashboard/UsderDashBoard";
 import ErrorPage from "../EorrorPage/ErrorPage";
-import DashBoard2 from "../Dashboard/DashBoard2/DashBoard2";
-import Member from "../Dashboard/DashBoard2Page/AdmineDashboad/Member/Member";
-import Announcements from "../Dashboard/DashBoard2Page/AdmineDashboad/Announcements/Announcements";
-import Agreement from "../Dashboard/DashBoard2Page/AdmineDashboad/Agreement/agreement";
+import UserDashboard from "../UserDashboard/UserDashboard";
+import Profile from "../UserDashBoardCom!/Profile/Profile";
+import PrivateRoute from "../Hookes/PrivateRoute/PrivateRoute";
+
+
+
+
 
 
 const Router =  createBrowserRouter([
@@ -38,37 +39,24 @@ const Router =  createBrowserRouter([
           path:"/login",
           element:<Login/>
         },
-        {
-          path:"/dashboard",
-          element:<PrivateRoute><UsderDashBoard/></PrivateRoute>
-          
-        }
+       
         
       ],
      
-     
     },
+   {
+    path:"/dashboard",
+    element:<div>
+      <PrivateRoute><UserDashboard/></PrivateRoute>
+      <Outlet></Outlet>
+    </div>,
+    children:[
     {
-      path:'dashboard2',
-     element:<div>
-     <PrivateRoute> <DashBoard2/></PrivateRoute>
-     <Outlet/>
-     </div>,
-     children:[
-      {
-        path:'member',
-        element:<Member/>
-      },
-      {
-        path:"announcements",
-        element:<Announcements/>
-      },
-      {
-        path:"agreement",
-        element:<Agreement/>
-      }
-     ]
+      path:"profile",
+      element:<Profile/>
     }
+    ]
+   }
    
     
 ])

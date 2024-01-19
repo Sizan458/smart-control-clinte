@@ -1,5 +1,3 @@
-import React from 'react';
-
 const Location = () => {
     return (
         <div className="w-[95%] mx-auto m-3">
