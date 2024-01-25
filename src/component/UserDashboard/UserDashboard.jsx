@@ -21,7 +21,7 @@ const UserDashboard = () => {
         <div>
          <div className="navbar bg-base-300 rounded-box">
   <div className="flex-1 px-2 lg:flex-none">
-    <a className="text-lg font-bold">daisyUI</a>
+  <NavLink to='/'><img src="https://i.ibb.co/VTQDYXJ/maxresdefault-removebg-preview.png" className="h-[80px]"/></NavLink>
   </div> 
   <div className="flex justify-end flex-1 px-2">
     <div className="flex items-stretch">

@@ -8,6 +8,9 @@ import ErrorPage from "../EorrorPage/ErrorPage";
 import UserDashboard from "../UserDashboard/UserDashboard";
 import Profile from "../UserDashBoardCom!/Profile/Profile";
 import PrivateRoute from "../Hookes/PrivateRoute/PrivateRoute";
+import MainDash from "../MainDashBoard/MainDash/MainDash";
+import Payment from "../MainDashBoard/Payment/Payment";
+import ManegeMember from "../MainDashBoard/MainDash/ManegeMember/ManegeMember";
 
 
 
@@ -55,6 +58,24 @@ const Router =  createBrowserRouter([
       path:"profile",
       element:<Profile/>
     }
+    ]
+   },
+   {
+    path:"/dashboard2",
+    element:<div>
+      <MainDash/>
+      <Outlet/>
+    </div>,
+    children:[
+      {
+        path:"Payment",
+        element:<Payment/>
+      },
+      //admin only path
+      {
+        path:"menageMember",
+        element:<ManegeMember/>
+      }
     ]
    }
    
